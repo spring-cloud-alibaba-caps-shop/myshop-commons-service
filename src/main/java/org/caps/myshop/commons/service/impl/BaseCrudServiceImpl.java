@@ -1,5 +1,7 @@
 package org.caps.myshop.commons.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.caps.myshop.commons.dto.AbstractBaseDomain;
 import org.caps.myshop.commons.service.BaseCrudService;
 import org.hibernate.validator.constraints.EAN;
@@ -59,5 +61,14 @@ public class BaseCrudServiceImpl<T extends AbstractBaseDomain,M extends MyMapper
         return null;
     }
 
+    @Override
+    public PageInfo<T> page(T domain, int pageNum, int pageSize) {
+        Example example = new Example(entityClass);
+        example.createCriteria().andEqualTo(domain);
+
+        PageHelper.startPage(pageNum, pageSize);
+        PageInfo<T> pageInfo = new PageInfo<>(mapper.selectByExample(example));
+        return pageInfo;
+    }
 
 }

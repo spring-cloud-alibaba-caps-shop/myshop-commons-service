@@ -14,8 +14,8 @@
     <packaging>jar</packaging>
 
     <name>myshop-commons-service</name>
-    <url>http://www.funtl.com</url>
-    <inceptionYear>2019-May</inceptionYear>
+    <inceptionYear>2018-Now</inceptionYear>
+
     <dependencies>
         <dependency>
             <groupId>org.caps</groupId>
